@@ -8,21 +8,25 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings 0",
+    "seed": "ts-node prisma/seed.ts",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@prisma/client": "^6.15.0",
     "@repo/ui": "*",
+    "mysql2": "^3.14.3",
     "next": "^15.5.0",
+    "prisma": "^6.15.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
-    "@types/node": "^22.15.3",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.1",
     "eslint": "^9.34.0",
+    "ts-node": "^10.9.2",
     "typescript": "5.9.2"
   }
 }
