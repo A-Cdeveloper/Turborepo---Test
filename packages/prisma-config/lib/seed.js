@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+const { PrismaClient } = require("../generated/prisma");
 
 const prisma = new PrismaClient();
 
@@ -182,7 +182,7 @@ async function main() {
   ];
 
   for (const car of cars) {
-    const brand = brands.find((b) => b.name === car.brandName)!;
+    const brand = brands.find((b) => b.name === car.brandName);
     await prisma.car.upsert({
       where: { registration: car.registration },
       update: {},

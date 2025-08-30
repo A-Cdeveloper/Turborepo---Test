@@ -12,11 +12,8 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@prisma/client": "^6.15.0",
-    "@repo/ui": "*",
     "mysql2": "^3.14.3",
     "next": "^15.5.0",
-    "prisma": "^6.15.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
