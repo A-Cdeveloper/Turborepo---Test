@@ -10,6 +10,7 @@ export async function GET(
   try {
     const car = await prisma.car.findUnique({
       where: { id: Number(id) },
+      include: { brand: true },
     });
 
     if (!car) {

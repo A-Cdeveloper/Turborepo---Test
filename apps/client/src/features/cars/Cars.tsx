@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { useCars } from "./hooks/useCars";
 
 const Cars = () => {
@@ -11,9 +12,13 @@ const Cars = () => {
     <div>
       {data?.map((car) => {
         return (
-          <div key={car.id}>
-            {car.brand.name} {car.model}
-          </div>
+          <ul key={car.id}>
+            <li>
+              <Link to={`/cars/${car.id}`} key={car.id}>
+                {car.brand.name} {car.model}
+              </Link>
+            </li>
+          </ul>
         );
       })}
     </div>
