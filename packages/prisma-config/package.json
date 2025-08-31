@@ -1,8 +1,5 @@
 {
     "name": "@repo/prisma",
     "version": "0.0.0",
-    "main": "index.ts",
-    "prisma": {
-        "seed": "node lib/seed.js"
-    }
+    "main": "index.ts"
 }
