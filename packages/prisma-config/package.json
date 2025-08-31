@@ -5,9 +5,6 @@
     "prisma": {
         "seed": "node lib/seed.js"
     },
-    "scripts": {
-        "seed": "node lib/seed.js"
-    },
     "dependencies": {
         "@prisma/client": "^6.15.0"
     },
