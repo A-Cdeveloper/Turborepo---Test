@@ -6,7 +6,7 @@ export const formatDate = (date: Date | string): string => {
   const d = typeof date === "string" ? parseISO(date) : date;
   if (!isValid(d)) return "Invalid date";
 
-  return format(d, "dd MMMM yyyy", { locale: sr });
+  return format(d, "dd MM yyyy");
 };
 
 export const formatDateTime = (date: Date | string): string => {
@@ -28,7 +28,7 @@ export const formatPrice = (
   price: number,
   currency: string = "EUR"
 ): string => {
-  return new Intl.NumberFormat("sr-RS", {
+  return new Intl.NumberFormat("de-DE", {
     style: "currency",
     currency: currency,
     minimumFractionDigits: 0,

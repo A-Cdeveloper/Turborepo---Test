@@ -1,5 +1,6 @@
 import { useParams } from "react-router";
 import { useCar } from "./hooks/useCar";
+import { formatDate, formatPrice } from "@repo/utils";
 
 const SingleCar = () => {
   const { id } = useParams();
@@ -17,9 +18,8 @@ const SingleCar = () => {
 
       <p>{data.kilometers} km</p>
       <p>{data.registration}</p>
-      <p>{data.price} €</p>
-      {/* <p>{data.createdAt.toLocaleDateString()}</p>
-      <p>{data.updatedAt.toLocaleDateString()}</p> */}
+      <p>{formatPrice(data.price)}</p>
+      <p>{formatDate(data.createdAt)}</p>
     </div>
   );
 };
