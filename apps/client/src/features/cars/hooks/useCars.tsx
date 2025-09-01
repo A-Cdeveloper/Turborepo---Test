@@ -1,11 +1,32 @@
-import { useQuery } from "@tanstack/react-query";
-import { getCars } from "../api";
 import type { CarWithBrand } from "@repo/types";
+import { useInfiniteQuery, type InfiniteData } from "@tanstack/react-query";
+import { getCars } from "../api";
 
 export const useCars = () => {
-  const { data, isLoading, error } = useQuery<CarWithBrand[]>({
+  const {
+    data,
+    isLoading,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery<
+    CarWithBrand[],
+    Error,
+    InfiniteData<CarWithBrand[], number>
+  >({
     queryKey: ["cars"],
-    queryFn: getCars,
+    queryFn: ({ pageParam }: any) => getCars(pageParam, 10), // 10 automobila po stranici
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, pages) =>
+      lastPage.length === 10 ? pages.length + 1 : undefined, // Ako ima 10, ima sledeća stranica
   });
-  return { data, isLoading, error };
+  return {
+    data,
+    isLoading,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  };
 };

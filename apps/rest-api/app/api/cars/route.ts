@@ -1,10 +1,20 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@repo/prisma";
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const { searchParams } = new URL(request.url);
+    const page = parseInt(searchParams.get("page") || "1");
+    const limit = parseInt(searchParams.get("limit") || "10");
+
+    // Prisma pagination
+    const skip = (page - 1) * limit;
+
     const cars = await prisma.car.findMany({
       include: { brand: true },
+      skip,
+      take: limit,
+      orderBy: { id: "asc" },
     });
 
     return NextResponse.json({
@@ -14,6 +24,7 @@ export async function GET() {
       status: 200,
     });
   } catch (error) {
+    console.log(error);
     return NextResponse.json({
       success: false,
       data: null,

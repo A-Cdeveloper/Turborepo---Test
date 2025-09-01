@@ -20,6 +20,7 @@ model Car {
   kilometers   Int
   registration String   @unique
   price        Float
+  imageUrl     String?  // URL slike automobila
   brandId      Int
   brand        Brand    @relation(fields: [brandId], references: [id])
   createdAt    DateTime @default(now())
