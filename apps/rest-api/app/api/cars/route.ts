@@ -10,11 +10,13 @@ export async function GET(request: Request) {
     // Prisma pagination
     const skip = (page - 1) * limit;
 
+    //await new Promise((resolve) => setTimeout(resolve, 4000));
+
     const cars = await prisma.car.findMany({
       include: { brand: true },
       skip,
       take: limit,
-      orderBy: { id: "asc" },
+      orderBy: { kilometers: "asc" },
     });
 
     return NextResponse.json({

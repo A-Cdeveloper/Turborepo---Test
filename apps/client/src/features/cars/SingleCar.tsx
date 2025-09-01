@@ -12,7 +12,7 @@ const SingleCar = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold">
+      <h1 className="text-4xl font-bold">
         {data.brand.name} {data.model}
       </h1>
 
